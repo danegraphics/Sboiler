@@ -1,0 +1,592 @@
+/*
+Sboiler - The pure CSS responsive website boilerplate
+Copyright (c) 2019 Steven Mortensen
+License: MIT
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+/*
+TODO: Here is a list of features that need to be added. (Check https://getbootstrap.com/docs/4.1/components/ and https://materializecss.com/ for items that you can create using only CSS.)
+- Responsive 12-column grid layout classes. (done as flex boxes instead of a css grid so that wrapping is normal)
+- An inbetween size from 800 to 950 for the top menu bar
+
+~ Div toggles (to allow the toggling of anything using checkboxes, radios (made into groups with < name="(same)">), etc.) (Just create visible-when-small/big classes and give the responsive code to it. Etc.)
+	- Figure out how to get the toggles to animate
+	- Test different uses, like a tabbed view, or an accordion list, modal pop-ups, pop-overs, etc.
+~ Badges
+- Buttons
+- Colors and themes (Also, combined versions of the same (can also be applied to radio labels))
+	- solid
+	- clear+outline
+	- underlining link
+- Cards (basically all of the kinds listed on bootstrap, but made much simpler) (DO WITH GRID LAYOUT)
+- Carousel of divs (automatic, selectable)
+- Dropdowns (probably similar to the div toggles but without an input that needs checked. Maybe an input on :active instead of :checked if necessary?)
+- Forms (give certain inputs focus outlines)
+	- Text inputs (both single and multiline)
+	- Submit buttons
+	- Radios
+	- Checkboxes
+	-	Other input types and styles (See Input Groups in bootstrap)
+- Modal pop-ups
+- Pop-overs
+- Progress bars (and some with animation)
+- Scroll position detection? (.div-wrap-h on :hover perhaps?)
+- Tooltips (would work like pop-overs, but on :hover and with an animation delay)
+
+For Tool Class ideas, see https://getbootstrap.com/docs/4.1/utilities/ and https://materializecss.com/
+- Dropshadows
+- Positions besides center (top, bottom, left, right, etc.)
+-
+*/
+
+/*=========================*/
+/*===UNIVERSAL VARIABLES===*/
+/*=========================*/
+
+/*These variables control the theming of the website, and can easily be replaced or edited*/
+
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Cinzel:400,700,900|Open+Sans:300,400,400i,700,800|Roboto:300,400,400i,700,900&subset=greek,greek-ext,latin-ext');
+
+:root {
+	--color-font-prime: #303030;
+	--color-font-prime-light: #EEEEEE;
+	--color-font-prime-dark: #303030;
+	--color-link-prime: #008b8b;
+	--color-link-hover-prime: #005b5b;
+	--color-link-click-prime: #6b0000;
+
+	--color-bg-main-prime: #FFFFFF;
+	--color-bg-main-second: #EEEEEE;
+	--color-main-prime: #438db4;
+    --color-main-hover: #367493;
+
+	--main-container-max-width: 1000px; /*I recommend greater than 800px and less than 1200px*/
+	--main-container-padding: 35px 35px;
+	--menu-link-padding: 13px;
+
+	--font-main: 'Open Sans';
+	--font-h1: 'Roboto'; /*WAS: Abril*/
+	--font-h2: 'Roboto';
+	--font-h3: 'Roboto';
+	--font-main-size: 18px;
+    --font-main-line-height: 1.5em;
+    --font-menu-size: 16px;
+    
+    --font-abril: 'Abril';
+    --font-open-sans: 'Open Sans';
+    --font-roboto: 'Roboto';
+    --font-fatface: 'Fatface';
+}
+
+
+/*================================*/
+/*===DEFAULT ELEMENT PROPERTIES===*/
+/*================================*/
+
+/*Apply default properties to everything.*/
+
+/*especially this*/
+* {
+	box-sizing: border-box;
+}
+
+body {
+	padding: 0px;
+	margin: 0px;
+	font-family: var(--font-main);
+	color: var(--color-font-prime);
+	background-color: var(--color-bg-main-second);
+	font-size: var(--font-main-size);
+    line-height: var(--font-main-line-height);
+}
+
+h1 {
+	font-family: var(--font-h1);
+	font-size: 2em;
+    line-height: 1.2em;
+    position: relative;
+}
+h2 {
+	font-family: var(--font-h2);
+	font-weight: 600;
+    font-size: 1.5em;
+    position: relative;
+}
+h3 {
+	font-family: var(--font-h3);
+    font-size: 1.2em;
+    position: relative;
+}
+
+hr {
+	height: 1px;
+	background-color: #00000026;
+	border: none;
+}
+
+div {
+	position: relative;
+	display: block;
+}
+
+br {
+   line-height: var(--font-main-line-height);
+}
+
+a {
+	display: inline-block;
+	text-decoration: none;
+	color: var(--color-link-prime);
+}
+a:hover {
+	color: var(--color-link-hover-prime);
+}
+a:active {
+	color: var(--color-link-click-prime);
+}
+
+blockquote {
+	background-color: #0000000D;
+	margin: 25px 20px;
+	padding: 12px 15px;
+	border-left: 7px solid;
+	border-color: #0000003D;
+}
+
+code {
+    font-family: monospace;
+    white-space: pre;
+	display: inline-block;
+	border-radius: 5px;
+    font-size: 0.8em;
+    margin: -0.1em 0.2em;
+    padding: 0em 0.8em;
+	color: var(--color-font-prime-light);
+	background-color: #000000AA;
+	box-shadow: inset 0 0 5px #00000088;
+}
+
+sup {
+    font-size: 0.6em;
+    position: relative;
+    vertical-align: bottom;
+    bottom: 0.5em;
+}
+sub {
+    font-size: 0.6em;
+    position: relative;
+    vertical-align: bottom;
+    bottom: -0.5em;
+}
+
+/*=======================================================================================================*/
+/*===PREDEFINED INTERFACE CLASSES - Classes that are designed with specific interface elements in mind===*/
+/*=======================================================================================================*/
+
+/*That wrapper that spans the whole width of the page.*/
+.div-wrap-h {
+	width: 100%;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+/*Contains the main content of the site and keeps it centered.*/
+.main-container {
+	width: 1100px;
+	position: relative;
+	overflow: auto;
+	padding: var(--main-container-padding);
+	background-color: var(--color-bg-main-prime);
+    margin: 0px auto;
+}
+.main-container :first-child {
+	margin-top: 0px;
+}
+
+/*Menu bar elements*/
+.menu-bar-container {
+    font-size: var(--font-menu-size);
+	width: 100%;
+	display: flex;
+	background-color: var(--color-main-prime);
+	overflow: hidden;
+	z-index: 1000;
+}
+.menu-bar {
+	width: 1100px;
+	display: flex;
+	margin: 0px auto;
+	z-index: 0;
+}
+.menu-button {
+	flex-grow: 1;
+	flex-direction: row;
+	padding: var(--menu-link-padding);
+	text-align: center;
+    font-family: var(--font-open-sans);
+    font-weight: 600;
+	color: var(--color-font-prime-light);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.menu-button-r, .menu-button-l {
+	position: absolute;
+	flex-grow: 0;
+	padding: var(--menu-link-padding);
+	padding-right: 20px;
+	padding-left: 20px;
+	text-align: center;
+	color: var(--color-font-prime-light);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: fit-content;
+	z-index: 1;
+}
+.menu-button-l {
+	left: 0;
+}
+.menu-button-r {
+	right: 0;
+}
+.menu-button:hover, .menu-button-l:hover, .menu-button-r:hover {
+	background-color: #0000002A;
+	color: var(--color-font-prime-light);
+}
+.menu-button:active, .menu-button-l:active, .menu-button-r:active {
+	background-color: #0000003A;
+	color: var(--color-font-prime-light);
+}
+
+/*Buttons*/
+.button-big {
+    text-align: center;
+    background-color: var(--color-main-prime);
+    color: var(--color-font-prime-light);
+    padding: 20px 20px;
+    font-family: var(--font-h2);
+    font-size: 25px;
+    margin: 25px 5px;
+    border-radius: 10px;
+}
+.button-big:hover {
+    color: var(--color-font-prime-light);
+    cursor: pointer;
+    background-color: var(--color-main-hover);
+}
+
+/*That common huge image thing that websites are doing nowadays*/
+.div-full-width-img {
+	position: relative;
+	width: 100%;
+	height: 300px;
+	background-size: cover;
+	background-position: center;
+	/*TODO: might not keep the following. It tints the background. Might not work in IE or Edge*/
+	color: white;
+	background-color: #AAAAAAFF;
+	background-blend-mode: multiply;
+}
+
+/*A simple framed image*/
+.framed-img {
+	border-radius: 5px;
+	border: 1px;
+	border-color: #0000000D;
+	background-color: var(--color-bg-main-prime);
+	margin: 20px 20px 10px;
+	padding: 10px;
+	max-width: 400px;
+	max-height: 400px;
+	box-shadow: 0px 3px 7px 1px #00000044;
+}
+
+/*A rounded image*/
+.round-img-div {
+    width: 250px;
+    height: 250px;
+    border-radius: 1000px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
+
+/*For spoilered text*/
+.spoiler {
+	background-color: black;
+	color: black;
+	padding: 0em 0.25em;
+}
+.spoiler:hover {
+	color: #CCCCCC
+}
+
+/*For quote blocks*/
+.quote-source {
+	text-align: left;
+	font-style: italic;
+	padding-right: 30px;
+	margin-top: 10px;
+}
+.quote-source:before {
+	content: "\2014  ";
+}
+
+/*code blocks*/
+.code-block {
+    line-height: 1.2em;
+    padding: 15px 20px;
+    width: 100%;
+    margin: 15px 0px;
+    word-wrap: none;
+}
+
+/*badges*/
+.badge {
+	display: inline-block;
+	border-radius: 2em;
+    font-size: 0.9em;
+    margin: -0.1em 0.15em;
+    padding: 0em 0.6em;
+	user-select: none;
+	/*badges don't need to change colors on hover, at least not right now*/
+	pointer-events: none;
+}
+
+
+/*=====================================================================================================*/
+/*===STYLE CLASSES - Classes that apply a style format to the element. Meant for buttons/badges/etc.===*/
+/*=====================================================================================================*/
+
+.solid-red {
+	color: white;
+	background-color: #AA2020;
+}
+.solid-red:hover {
+	background-color: #991010;
+}
+
+.solid-green {
+	color: white;
+	background-color: #008020;
+}
+.solid-green:hover {
+	background-color: #007010;
+}
+
+.solid-blue {
+	color: white;
+	background-color: #0055AA;
+}
+.solid-blue:hover {
+	background-color: #004499
+}
+
+
+/*===========================================================================================*/
+/*===TOOL CLASSES - Classes that can be applied to anything to fulfill common layout needs===*/
+/*===========================================================================================*/
+
+/*CENTERING CLASSES! Yay!*/
+/*These center content inside some RELATIVELY POSITIONED element with a STATICALLY DEFINED HEIGHT and WIDTH.*/
+/*Warning: These are positioned absolutely, meaning the parent element should have position: relative (this CSS gives it to divs by default), */
+/*and should be sized STATICALLY. (unless you know what you're doing of course)*/
+.center-h {
+	margin-left: 0px;
+	margin-right: 0px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.center-v {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.center, .center-hv, .center-vh {
+	margin: 0px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/*FLOATING CLASSES!*/
+.float-r {
+	display: block;
+	float: right;
+}
+.float-l {
+	display: block;
+	float: left;
+}
+
+/*Div toggle*/
+.div-toggle-label {
+	cursor: pointer;
+	display: block;
+}
+.div-toggle {
+	display: none;
+}
+.div-toggle:not(:checked) + div {
+	display: none;
+}
+
+/*For toggling the height of things*/
+.div-toggle-height {
+	display: none;
+}
+.div-toggle-height:not(:checked) + div {
+	height: 0px;
+}
+
+.disabled {
+	pointer-events: none;
+}
+
+
+/*=========================================================================================*/
+/*===ANIMATION CLASSES - Classes to make animating elements easier. Just add keyframes! ===*/
+/*=========================================================================================*/
+
+/*Transitioning elements*/
+.transition-eo-02s {
+	transition: all 0.2s ease-out;
+}
+
+.transition-ei-02s {
+	transition: all 0.2s ease-in;
+}
+
+.transition-02s {
+	transition: all 0.2s;
+}
+
+
+/*=========================================================================================*/
+/*===MEDIA TAGS - Responsible for ensuring the sit still looks good on all screen sizes.===*/
+/*=========================================================================================*/
+
+@media screen and (max-width: 699px) {
+	.main-container {
+		width: 100%;
+	}
+	.menu-bar {
+		width: 100%;
+		flex-direction: column;
+	}
+    .float-l, .float-r {
+      position: relative;
+      max-width: 92%;
+      float: none;
+    }
+
+	/*Responsive classes*/
+	.flex-when-small {
+		display: flex!important;
+	}
+	.block-when-small {
+		display: block!important;
+	}
+	.invisible-when-small {
+		display: none!important;
+	}
+}
+
+@media screen and (min-width: 700px) and (max-width: 849px) {
+	.main-container {
+		width: 700px;
+	}
+	.menu-bar {
+		width: 700px;
+		flex-direction: column;
+	}
+    .float-l, .float-r {
+        max-width: 550px;
+        float: none;
+    }
+
+	/*Responsive classes*/
+	.flex-when-small {
+		display: flex!important;
+	}
+	.block-when-small {
+		display: block!important;
+	}
+	.invisible-when-small {
+		display: none!important;
+	}
+}
+
+@media screen and (min-width: 800px) and (max-width: 949px) {
+
+}
+
+@media screen and (min-width: 850px) and (max-width: 1199px) {
+	.main-container {
+		width: 800px;
+	}
+	.menu-bar {
+		width: 800px;
+	}
+	.menu-bar-container {
+		display: flex!important;
+	}
+
+	/*Responsive classes*/
+	.flex-when-big {
+		display: flex!important;
+	}
+	.block-when-big {
+		display: block!important;
+	}
+	.invisible-when-big {
+		display: none!important;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.main-container {
+		width: var(--main-container-max-width);
+	}
+	.menu-bar {
+		width: var(--main-container-max-width);
+	}
+	.menu-bar-container {
+		display: flex!important;
+	}
+
+	/*Responsive classes*/
+	.flex-when-big {
+		display: flex!important;
+	}
+	.block-when-big {
+		display: block!important;
+	}
+	.invisible-when-big {
+		display: none!important;
+	}
+}
