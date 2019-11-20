@@ -1,6 +1,6 @@
 /*
 Sboiler - The pure CSS responsive website boilerplate
-Copyright (c) 2018 Steven Mortensen
+Copyright (c) 2019 Steven Mortensen
 License: MIT
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -410,9 +410,11 @@ sub {
 /*===========================================================================================*/
 
 /*CENTERING CLASSES! Yay!*/
+
 /*These center content inside some RELATIVELY POSITIONED element with a STATICALLY DEFINED HEIGHT and WIDTH.*/
 /*Warning: These are positioned absolutely, meaning the parent element should have position: relative (this CSS gives it to divs by default), */
-/*and should be sized STATICALLY. (unless you know what you're doing of course)*/
+/*and should be sized STATICALLY. (unless you know what you're doing of course).*/
+/*In the future I make other center classes that work under more flexible circumstances in order to cover all bases if possible.*/
 .center-h {
 	margin-left: 0px;
 	margin-right: 0px;
