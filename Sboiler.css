@@ -1,6 +1,6 @@
 /*
 Sboiler - The pure CSS responsive website boilerplate
-Copyright (c) 2019 Steven Mortensen
+Copyright (c) 2018 Steven Mortensen
 License: MIT
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -76,7 +76,7 @@ For Tool Class ideas, see https://getbootstrap.com/docs/4.1/utilities/ and https
 	--color-bg-main-prime: #FFFFFF;
 	--color-bg-main-second: #EEEEEE;
 	--color-main-prime: #438db4;
-    --color-main-hover: #367493;
+	--color-main-hover: #367493;
 
 	--main-container-max-width: 1000px; /*I recommend greater than 800px and less than 1200px*/
 	--main-container-padding: 35px 35px;
@@ -87,13 +87,13 @@ For Tool Class ideas, see https://getbootstrap.com/docs/4.1/utilities/ and https
 	--font-h2: 'Roboto';
 	--font-h3: 'Roboto';
 	--font-main-size: 18px;
-    --font-main-line-height: 1.5em;
-    --font-menu-size: 16px;
-    
-    --font-abril: 'Abril';
-    --font-open-sans: 'Open Sans';
-    --font-roboto: 'Roboto';
-    --font-fatface: 'Fatface';
+	--font-main-line-height: 1.5em;
+	--font-menu-size: 16px;
+	
+	--font-abril: 'Abril';
+	--font-open-sans: 'Open Sans';
+	--font-roboto: 'Roboto';
+	--font-fatface: 'Fatface';
 }
 
 
@@ -115,25 +115,25 @@ body {
 	color: var(--color-font-prime);
 	background-color: var(--color-bg-main-second);
 	font-size: var(--font-main-size);
-    line-height: var(--font-main-line-height);
+	line-height: var(--font-main-line-height);
 }
 
 h1 {
 	font-family: var(--font-h1);
 	font-size: 2em;
-    line-height: 1.2em;
-    position: relative;
+	line-height: 1.2em;
+	position: relative;
 }
 h2 {
 	font-family: var(--font-h2);
 	font-weight: 600;
-    font-size: 1.5em;
-    position: relative;
+	font-size: 1.5em;
+	position: relative;
 }
 h3 {
 	font-family: var(--font-h3);
-    font-size: 1.2em;
-    position: relative;
+	font-size: 1.2em;
+	position: relative;
 }
 
 hr {
@@ -172,29 +172,29 @@ blockquote {
 }
 
 code {
-    font-family: monospace;
-    white-space: pre;
+	font-family: monospace;
+	white-space: pre;
 	display: inline-block;
 	border-radius: 5px;
-    font-size: 0.8em;
-    margin: -0.1em 0.2em;
-    padding: 0em 0.8em;
+	font-size: 0.8em;
+	margin: -0.1em 0.2em;
+	padding: 0em 0.8em;
 	color: var(--color-font-prime-light);
 	background-color: #000000AA;
 	box-shadow: inset 0 0 5px #00000088;
 }
 
 sup {
-    font-size: 0.6em;
-    position: relative;
-    vertical-align: bottom;
-    bottom: 0.5em;
+	font-size: 0.6em;
+	position: relative;
+	vertical-align: bottom;
+	bottom: 0.5em;
 }
 sub {
-    font-size: 0.6em;
-    position: relative;
-    vertical-align: bottom;
-    bottom: -0.5em;
+	font-size: 0.6em;
+	position: relative;
+	vertical-align: bottom;
+	bottom: -0.5em;
 }
 
 /*=======================================================================================================*/
@@ -207,8 +207,8 @@ sub {
 }
 
 .flex {
-    display: flex;
-    flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
 /*Contains the main content of the site and keeps it centered.*/
@@ -218,7 +218,7 @@ sub {
 	overflow: auto;
 	padding: var(--main-container-padding);
 	background-color: var(--color-bg-main-prime);
-    margin: 0px auto;
+	margin: 0px auto;
 }
 .main-container :first-child {
 	margin-top: 0px;
@@ -226,7 +226,7 @@ sub {
 
 /*Menu bar elements*/
 .menu-bar-container {
-    font-size: var(--font-menu-size);
+	font-size: var(--font-menu-size);
 	width: 100%;
 	display: flex;
 	background-color: var(--color-main-prime);
@@ -244,8 +244,8 @@ sub {
 	flex-direction: row;
 	padding: var(--menu-link-padding);
 	text-align: center;
-    font-family: var(--font-open-sans);
-    font-weight: 600;
+	font-family: var(--font-open-sans);
+	font-weight: 600;
 	color: var(--color-font-prime-light);
 	white-space: nowrap;
 	overflow: hidden;
@@ -282,19 +282,19 @@ sub {
 
 /*Buttons*/
 .button-big {
-    text-align: center;
-    background-color: var(--color-main-prime);
-    color: var(--color-font-prime-light);
-    padding: 20px 20px;
-    font-family: var(--font-h2);
-    font-size: 25px;
-    margin: 25px 5px;
-    border-radius: 10px;
+	text-align: center;
+	background-color: var(--color-main-prime);
+	color: var(--color-font-prime-light);
+	padding: 20px 20px;
+	font-family: var(--font-h2);
+	font-size: 25px;
+	margin: 25px 5px;
+	border-radius: 10px;
 }
 .button-big:hover {
-    color: var(--color-font-prime-light);
-    cursor: pointer;
-    background-color: var(--color-main-hover);
+	color: var(--color-font-prime-light);
+	cursor: pointer;
+	background-color: var(--color-main-hover);
 }
 
 /*That common huge image thing that websites are doing nowadays*/
@@ -325,12 +325,12 @@ sub {
 
 /*A rounded image*/
 .round-img-div {
-    width: 250px;
-    height: 250px;
-    border-radius: 1000px;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
+	width: 250px;
+	height: 250px;
+	border-radius: 1000px;
+	overflow: hidden;
+	background-size: cover;
+	background-position: center;
 }
 
 /*For spoilered text*/
@@ -356,20 +356,20 @@ sub {
 
 /*code blocks*/
 .code-block {
-    line-height: 1.2em;
-    padding: 15px 20px;
-    width: 100%;
-    margin: 15px 0px;
-    word-wrap: none;
+	line-height: 1.2em;
+	padding: 15px 20px;
+	width: 100%;
+	margin: 15px 0px;
+	word-wrap: none;
 }
 
 /*badges*/
 .badge {
 	display: inline-block;
 	border-radius: 2em;
-    font-size: 0.9em;
-    margin: -0.1em 0.15em;
-    padding: 0em 0.6em;
+	font-size: 0.9em;
+	margin: -0.1em 0.15em;
+	padding: 0em 0.6em;
 	user-select: none;
 	/*badges don't need to change colors on hover, at least not right now*/
 	pointer-events: none;
@@ -498,11 +498,11 @@ sub {
 		width: 100%;
 		flex-direction: column;
 	}
-    .float-l, .float-r {
-      position: relative;
-      max-width: 92%;
-      float: none;
-    }
+	.float-l, .float-r {
+	  position: relative;
+	  max-width: 92%;
+	  float: none;
+	}
 
 	/*Responsive classes*/
 	.flex-when-small {
@@ -524,10 +524,10 @@ sub {
 		width: 700px;
 		flex-direction: column;
 	}
-    .float-l, .float-r {
-        max-width: 550px;
-        float: none;
-    }
+	.float-l, .float-r {
+		max-width: 550px;
+		float: none;
+	}
 
 	/*Responsive classes*/
 	.flex-when-small {
